@@ -6,6 +6,7 @@ This is a simple laser radar camera external parameter calibration software that
 ```
 1. ROS
 2. PCL
+3. OpenCV
 ```
 
 #### 2. Build
@@ -16,27 +17,38 @@ catkin_make
 
 #### 3. Run
 ```
-### 1.Prepare keyframe point clouds and keyframe poses and place them in the data directory
+### 1.Prepare rosbag with image message and lidar point cloud message
 ### 2.Modify parameters in the config directory
 ### 3.run the program
 source ./devel/setup.bash
-roslaunch plane_localization start.launch
-### 4.Obtain the results
----------------------------
-transformation_matrix_vector size: 49892
-cluster_transformation_matrix_vector size: 19614
-cluster_transformation_time: 0.034689
----------------------------
-fine_verify_octree_time: 0.084577
-best_transformation_score: 1865 best_transformation_matrix: 
-   -0.417447     0.908311    0.0266064   -0.0180196
-   -0.908634    -0.417593 -9.00216e-05     0.061221
-   0.0110289   -0.0242131     0.999646    -0.130588
-           0            0            0            1
-localization_time: 0.772197
+roslaunch lidar_camera_calibration start.launch
+### 4.adjust external parameters and observe results
+
+按q增加roll  按a减少roll
+按w增加pitch 按s减少pitch
+按e增加yaw   按d减少yaw
+按r增加x     按f减少x
+按t增加y     按g减少y
+按y增加z     按h减少z
+非阻塞键盘读取演示 (按空格退出)
+数据准备完成，可以调整标定参数!
+减少z
+0 0 0 0 0 -0.05
+    1     0     0     0
+    0     1     0     0
+    0     0     1 -0.05
+    0     0     0     1
+减少z
+0 0 0 0 0 -0.1
+   1    0    0    0
+   0    1    0    0
+   0    0    1 -0.1
+   0    0    0    1
+程序结束
 ```
 
 #### 4. Example
 ```
-The above figure achieves correct global localization (relocation) in an indoor scene of approximately 2500 square meters
+The above figure shows the effect of extrinsic calibration.
 ```
+<img width="2485" height="1412" alt="image" src="https://github.com/user-attachments/assets/9ab90d26-0925-4b78-9a7d-9025556c6c53" />
