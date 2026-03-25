@@ -1,0 +1,16 @@
+lidar_camera_calibration:
+  lidar_msg_type: "PointCloud2" #支持: PointCloud2和CustomMsg
+  lidar_msg_name: "/livox/lidar"
+  image_msg_name: "/camera/color/image_raw"
+  point_cloud_min_distance: 0.3 #点云距离最小值
+  point_cloud_max_distance: 10.0 #点云距离最大值
+  point_cloud_horizontal_min_fov: -45.0 #点云水平fov的最小值
+  point_cloud_horizontal_max_fov: 45.0 #点云水平fov的最大值
+  point_cloud_vertical_min_fov: -45.0 #点云垂直fov的最小值
+  point_cloud_vertical_max_fov: 45.0 #点云垂直fov的最大值
+  point_cloud_cumulative_number: 50 #累积多少帧的点云
+  camera_intrinsic_parameters: [689.7938232421875, 0.0, 638.205810546875,
+                                0.0, 690.2035522460938, 364.9825134277344,
+                                0.0, 0.0, 1.0] #相机的内参
+  initial_extrinsic_parameters: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0] #初始外参roll，pitch，yaw，x，y，z
+  increment_extrinsic_parameters: [1.0, 1.0, 1.0, 0.05, 0.05, 0.05] #外参的增量roll，pitch，yaw，x，y，z
